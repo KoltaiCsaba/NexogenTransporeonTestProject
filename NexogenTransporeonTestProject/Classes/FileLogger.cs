@@ -31,23 +31,8 @@ namespace NexogenTransporeonTestProject.Classes
 
             using (StreamWriter streamWriter = new StreamWriter(_path + "log.txt"))
             {
-                switch (logLevel)
-                {
-                    case LogLevel.Debug:
-                        streamWriter.WriteLine(GetFormattedMessage(logLevel, message));
-                        streamWriter.Close();
-                        break;
-                    case LogLevel.Info:
-                        streamWriter.WriteLine(GetFormattedMessage(logLevel, message));
-                        streamWriter.Close();
-                        break;
-                    case LogLevel.Error:
-                        streamWriter.WriteLine(GetFormattedMessage(logLevel, message));
-                        streamWriter.Close();
-                        break;
-                    default:
-                        break;
-                }
+                streamWriter.WriteLine(GetFormattedMessage(logLevel, message));
+                streamWriter.Close();
             }
         }
     }
