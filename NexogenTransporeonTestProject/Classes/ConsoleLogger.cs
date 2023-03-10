@@ -9,7 +9,7 @@ namespace NexogenTransporeonTestProject.Classes
         {
             if (message.Length > 1000)
             {
-                throw new ArgumentOutOfRangeException("message", "Log message is too long. Log message should be no longer than 1000 characters");
+                throw new ArgumentOutOfRangeException(nameof(message), "Log message is too long. Log message should be no longer than 1000 characters");
             }
 
             switch (logLevel)
