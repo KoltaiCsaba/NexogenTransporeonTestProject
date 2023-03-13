@@ -20,20 +20,29 @@ namespace NexogenTransporeonTestProject.Classes
             List<int> logFileIndexes = new List<int>();
             logFileNames = files.Where(x => x.Name.Contains("log")).Select(x => x.Name).ToList();
             logFileIndexes = logFileNames.Where(x => x.Split('.').Length > 2).Select(x => int.Parse(x.Split('.')[1])).ToList();
-            int maxIndex = logFileIndexes.Max();
+            int maxIndex = 0;
+
+            if (logFileIndexes.Count() > 0)
+            {
+                maxIndex = logFileIndexes.Max();
+            }
+
             string filePath = _path + "log.txt";
-            long length = new FileInfo(filePath).Length;
+            long length = 0;
+
+            if (File.Exists(filePath))
+            {
+                length = new FileInfo(filePath).Length;
+            }
+            
 
             if (length > 5000)
             {
                 File.Move(filePath, _path + String.Format("log.{0}.txt", maxIndex + 1));
             }
 
-            using (StreamWriter streamWriter = new StreamWriter(_path + "log.txt"))
-            {
-                streamWriter.WriteLine(GetFormattedMessage(logLevel, message));
-                streamWriter.Close();
-            }
+            File.ReadAllLines(filePath);
+            File.AppendAllLines(filePath, new List<string>() { GetFormattedMessage(logLevel, message) });
         }
     }
 }
