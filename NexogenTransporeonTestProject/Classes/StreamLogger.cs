@@ -15,7 +15,9 @@ namespace NexogenTransporeonTestProject.Classes
 
         public override void Log(LogLevel logLevel, string message)
         {
-            _stream.Write(Encoding.UTF8.GetBytes(GetFormattedMessage(logLevel, message)));
+            StreamWriter streamWriter = new StreamWriter(_stream);
+            streamWriter.WriteLine(GetFormattedMessage(logLevel, message));
+            streamWriter.Flush();
         }
     }
 }
