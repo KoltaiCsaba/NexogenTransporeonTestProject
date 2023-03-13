@@ -29,6 +29,8 @@ namespace NexogenTransporeonTestProject.Classes
                 default:
                     break;
             }
+
+            Console.ResetColor();
         }
     }
 }
