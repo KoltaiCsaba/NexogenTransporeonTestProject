@@ -8,6 +8,7 @@ consoleLogger.Log(NexogenTransporeonTestProject.Enums.LogLevel.Debug, "This is a
 consoleLogger.Log(NexogenTransporeonTestProject.Enums.LogLevel.Info, "This is an info message.");
 consoleLogger.Log(NexogenTransporeonTestProject.Enums.LogLevel.Error, "This is an error message.");
 Console.WriteLine("Success.");
+Console.WriteLine("Press enter to continue...");
 Console.Read();
 
 Console.WriteLine("Testing the file logger.");
@@ -16,6 +17,7 @@ fileLogger.Log(NexogenTransporeonTestProject.Enums.LogLevel.Debug, "This is a de
 fileLogger.Log(NexogenTransporeonTestProject.Enums.LogLevel.Info, "This is an info message.");
 fileLogger.Log(NexogenTransporeonTestProject.Enums.LogLevel.Error, "This is an error message.");
 Console.WriteLine("Success.");
+Console.WriteLine("Press enter to continue...");
 Console.Read();
 
 Console.WriteLine("Testing the stream logger.");
@@ -37,4 +39,5 @@ using (StreamReader streamReader = new StreamReader(streamLog))
 };
 
 Console.WriteLine("Success.");
+Console.WriteLine("Press enter to exit...");
 Console.Read();
