@@ -12,7 +12,7 @@ Console.WriteLine("Press enter to continue...");
 Console.Read();
 
 Console.WriteLine("Testing the file logger.");
-LogBase fileLogger = new FileLogger("/Users/koltaicsaba/Logs/");
+LogBase fileLogger = new FileLogger("./");
 fileLogger.Log(NexogenTransporeonTestProject.Enums.LogLevel.Debug, "This is a debug message.");
 fileLogger.Log(NexogenTransporeonTestProject.Enums.LogLevel.Info, "This is an info message.");
 fileLogger.Log(NexogenTransporeonTestProject.Enums.LogLevel.Error, "This is an error message.");
