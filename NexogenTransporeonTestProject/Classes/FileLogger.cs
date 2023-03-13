@@ -29,20 +29,28 @@ namespace NexogenTransporeonTestProject.Classes
 
             string filePath = _path + "log.txt";
             long length = 0;
+            bool fileExists = File.Exists(filePath);
 
-            if (File.Exists(filePath))
+            if (fileExists)
             {
                 length = new FileInfo(filePath).Length;
             }
-            
 
             if (length > 5000)
             {
                 File.Move(filePath, _path + String.Format("log.{0}.txt", maxIndex + 1));
             }
 
-            File.ReadAllLines(filePath);
-            File.AppendAllLines(filePath, new List<string>() { GetFormattedMessage(logLevel, message) });
+            if (fileExists)
+            {
+                File.ReadAllLines(filePath);
+                File.AppendAllLines(filePath, new List<string>() { GetFormattedMessage(logLevel, message) });
+            }
+            else
+            {
+                File.WriteAllLines(filePath, new List<string>() { GetFormattedMessage(logLevel, message) });
+            }
+            
         }
     }
 }
